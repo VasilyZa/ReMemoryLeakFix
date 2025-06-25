@@ -19,3 +19,4 @@ Feel free to contribute to the project!
 I'm also fine if you use this mod in your modpacks, just make sure to mention it.  
 
 However I don't allow clients or other mods to merge this mod without permission, if you would like to use this mod in your client or another mod please contact me.
+
