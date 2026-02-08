@@ -16,10 +16,6 @@ public @interface Remap {
 
     String[] fabric() default {};
 
-    String[] forge() default {};
-
-    String[] mcp() default {};
-
     boolean excludeDev() default false;
 
     MinecraftRequirement mcVersions() default @MinecraftRequirement({});

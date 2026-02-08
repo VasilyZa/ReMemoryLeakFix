@@ -1,27 +1,29 @@
 package ca.fxco.memoryleakfix;
 
-import dev.architectury.injectables.annotations.ExpectPlatform;
+import net.fabricmc.loader.api.FabricLoader;
+import net.fabricmc.loader.api.Version;
+import net.fabricmc.loader.api.VersionParsingException;
 
 public class MemoryLeakFixExpectPlatform {
 
-    @ExpectPlatform
     public static boolean isModLoaded(String id) {
-        // Just throw an error, the content should get replaced at runtime.
-        throw new AssertionError();
+        return FabricLoader.getInstance().isModLoaded(id);
     }
 
-    @ExpectPlatform
+    @SuppressWarnings("OptionalGetWithoutIsPresent")
     public static int compareMinecraftToVersion(String version) {
-        throw new AssertionError();
+        try {
+            return FabricLoader.getInstance().getModContainer("minecraft").get().getMetadata().getVersion().compareTo(Version.parse(version));
+        } catch (VersionParsingException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    @ExpectPlatform
     public static String getMappingType() {
-        throw new AssertionError();
+        return "fabric";
     }
 
-    @ExpectPlatform
     public static boolean isDevEnvironment() {
-        throw new AssertionError();
+        return FabricLoader.getInstance().isDevelopmentEnvironment();
     }
 }
